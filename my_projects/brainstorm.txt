@@ -1,5 +1,5 @@
 Dice Roller
 
-Guess the word Game
+Mad Lib Game
 
 Calculator
