@@ -1,42 +1,39 @@
+#!/usr/bin/python3
+
+
 import random
 
-def get_player_choice():
-    choices = ["fire", "water", "grass", "electric", "poison", "psychic"]
-    while True:
-        player_choice = input("Choose your Pokemon type: ").lower()
-        if player_choice in choices:
-            return player_choice
-        else:
-            print("Invalid choice. Please choose between fire, water, grass, electric, poison, or psychic types.")
 
-def get_computer_choice(choices):
-    return random.choice(choices)
+def main():
+    print("I am the last of the Elite Four, Lets Battle!")
 
-def determine_winner(player_choice, computer_choice, rules):
-    if player_choice == computer_choice:
-        return "It's a tie!"
-    elif computer_choice in rules[player_choice]:
-        return "You win!"
-    else:
-        return "I win!"
+    choices = ["fire", "water", "grass", "electric", "posion", "psychic"]
 
-def play_game():
-    print("I am the last Elite Four, Let's Battle!")
-    choices = ["fire", "water", "grass", "electric", "poison", "psychic"]
     rules = {
-        "fire": ["grass", "poison", "electric"],
+        "fire": ["grass", "posion", "electric"],
         "water": ["fire"],
         "grass": ["water", "electric"],
-        "electric": ["water", "fire", "poison"],
-        "poison": ["grass", "psychic", "water"],
-        "psychic": ["grass", "electric", "water"]
-    }
-    player_choice = get_player_choice()
-    computer_choice = get_computer_choice(choices)
-    print("You chose:", player_choice)
-    print("I chose:", computer_choice)
-    result = determine_winner(player_choice, computer_choice, rules)
-    print(result)
+        "electric": ["water", "fire" "poison"],
+        "posion": ["grass", "psychic" "water"],
+        "psychic": ["grass", "electric" "water"],}
 
-play_game()
+    player_choice = input("Choose your Pokemon type : ").lower()
 
+    if player_choice not in choices:
+        print("Invalid choice. Please choose between fire, water, grass, electric, posion, psychic types. ")
+    else:
+        computer_choice = random.choice(choices)
+    
+        print("You chose:", player_choice)
+        print("Elite Four chose:", computer_choice)
+    
+
+    if player_choice == computer_choice:
+        print("It's a tie!")
+    elif computer_choice in rules[player_choice]:
+        print("You win!")
+    else:
+        print("Elite Four wins!")
+
+if __name__ =="__main__":
+    main()
